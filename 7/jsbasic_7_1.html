@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script src="cookies.js"></script>
+    <title>Задание 7.1</title>
+    <script>
+        if (navigator.cookieEnabled === true && performance.navigation.type !== 1) {
+            alert('Cookies включены');
+        } else if (performance.navigation.type !== 1) {
+            alert('Включите Cookie для коректной работы');
+        }
+        function submit() {
+
+            setcookie("user",document.all.usernametext.value,365*24*3600*1000);
+
+            setcookie("user2",document.all.username2text.value,365*24*3600*1000);
+            setcookie("user3",'Заданое значение',365*24*3600*1000);
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+<p>
+    Введите имя:
+</p>
+<input type="text" name="usernametext"><br>
+<p>
+    Введите Фамилию
+</p>
+<input type="text" name="username2text">
+<input type="submit" name="Submit" value="Submit"
+       onClick="submit();">
+<br>
+<br>
+<div style="width:250px; height:100px; border: 2px chartreuse solid; padding-left: 10px;
+color:#000000;">
+    <script>
+        if (performance.navigation.type === 1) {
+            let username;
+            username=getcookie("user");
+            document.write("Cookie 1 "+username+'<br>');
+            username=getcookie("user2");
+            document.write("Cookie 2 "+username+'<br>');
+            username=getcookie("user3");
+            document.write("Cookie 3 "+username+'<br>');
+        }
+    </script>
+</div>
+
+</body>
+</html>
